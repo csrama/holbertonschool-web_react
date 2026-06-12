@@ -5,37 +5,19 @@ interface Student {
   location: string;
 }
 
-const student1: Student = {
-  firstName: 'Nada',
-  lastName: 'AlMutairi',
-  age: 21,
-  location: 'Riyadh',
-};
-
-const student2: Student = {
-  firstName: 'Sara',
-  lastName: 'Ahmed',
-  age: 22,
-  location: 'Jeddah',
-};
-
+const student1: Student = { firstName: 'Alice', lastName: 'Johnson', age: 20, location: 'Riyadh' };
+const student2: Student = { firstName: 'Bob', lastName: 'Smith', age: 22, location: 'Jeddah' };
 const studentsList: Student[] = [student1, student2];
 
 const table: HTMLTableElement = document.createElement('table');
 const tbody: HTMLTableSectionElement = document.createElement('tbody');
 
 studentsList.forEach((student: Student) => {
-  const row: HTMLTableRowElement = document.createElement('tr');
-
-  const firstNameCell: HTMLTableCellElement = document.createElement('td');
-  firstNameCell.textContent = student.firstName;
-
-  const locationCell: HTMLTableCellElement = document.createElement('td');
-  locationCell.textContent = student.location;
-
-  row.appendChild(firstNameCell);
-  row.appendChild(locationCell);
-  tbody.appendChild(row);
+  const row: HTMLTableRowElement = tbody.insertRow();
+  const cell1: HTMLTableCellElement = row.insertCell(0);
+  const cell2: HTMLTableCellElement = row.insertCell(1);
+  cell1.textContent = student.firstName;
+  cell2.textContent = student.location;
 });
 
 table.appendChild(tbody);
